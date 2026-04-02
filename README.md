@@ -1,157 +1,94 @@
-🖊️ Polyline Editor — Implementation & Deployment
+# Polyline Editor
 
-📌 Project Overview
+An interactive web application for creating, editing, and managing multiple polylines on a canvas. The **Polyline Editor** allows users to draw, move, delete, and style polylines in real-time with intuitive controls and visual feedback.
 
-The Polyline Editor is an interactive web application for creating, editing, and managing multiple polylines on a canvas.
+---
 
-It supports:
+## 🌟 Key Features
 
-Drawing, moving, and deleting points
-Undo/redo functionality
-Canvas refresh & clearing
-Exporting canvas as PNG
-Real-time styling of lines and points
+- **Draw Mode:** Click to add points and create polylines.
+- **Move Mode:** Select and drag points to reposition them.
+- **Delete Mode:** Remove individual points from polylines.
+- **Undo / Redo:** Revert or restore changes at any step.
+- **Clear Canvas:** Remove all polylines and start fresh.
+- **Refresh Canvas:** Redraw all polylines while maintaining styles.
+- **Export as PNG:** Download the current canvas view.
+- **Styling Options:**  
+  - Line color & width  
+  - Point color & radius  
+- **Keyboard Shortcuts:**  
+  - `Ctrl+Z` → Undo  
+  - `Ctrl+Y` → Redo  
+  - `Ctrl+S` → Export PNG  
+  - `Ctrl+Delete` → Clear Canvas  
+  - `B` → Switch to Draw mode  
+  - `M` → Switch to Move mode  
+  - `D` → Switch to Delete mode  
+  - `R` → Refresh  
+  - `Q` → Quit
 
-💡 The project demonstrates Human-Computer Interaction (HCI) principles through:
+---
 
-Intuitive mouse & keyboard controls
-Immediate visual feedback
-Responsive and clean UI
+## 🛠 Implementation Details
 
-✨ Features
-Feature	Description
-Draw (b)	Create polylines by clicking sequential points with live preview
-Move (m)	Select and reposition points (Undo/Redo supported)
-Delete (d)	Remove points while maintaining polyline continuity
-Undo / Redo	Ctrl+Z / Ctrl+Y or toolbar buttons
-Refresh (r)	Redraw canvas to remove artifacts
-Clear	Reset all polylines
-Export PNG	Save canvas as an image
-Real-time Styling	Adjust line color, width, point color, radius
-Hover Feedback	Orange highlight on hover
-Selection Feedback	Red highlight with shadow
-Limits	Max 100 polylines, 10px selection radius
+- **Canvas-based drawing:** Uses HTML `<canvas>` and JavaScript for dynamic rendering.
+- **Mouse interactions:**  
+  - Hovering over points highlights them with a glow effect and tooltip status.  
+  - Real-time point preview in Draw mode.
+- **State Management:**  
+  - Supports **undo/redo** stacks for all drawing actions.
+  - Maintains current polyline and all saved polylines.
+- **Performance:** Limited to **100 polylines** for optimal performance.
+- **Responsive Layout:** Canvas and editor panels adapt to screen size with CSS flexbox and relative units.
 
-🖼️ Screenshots
+---
 
-Drawing Mode
-![Draw Mode] path: D:\HCI-LAB\hci-lab-polyline-editor\screenshots\draw.png
-Move Mode
-![Move Mode] path: D:\HCI-LAB\hci-lab-polyline-editor\screenshots\move.png
-Delete / Refresh
-![Delete Mode] path: D:\HCI-LAB\hci-lab-polyline-editor\screenshots\delete.png
+## 🎨 Styling & UI
 
-🏗️ System Architecture
-🔹 Tech Stack
-HTML — Structure (Canvas + UI)
-CSS — Responsive styling (gradients, shadows, layout)
-JavaScript — Core logic & interactivity
-🔹 Core Components
+- Modern, clean design with gradient headers and soft shadows.
+- Left panel for **styling controls** (line/point color and size).
+- Top toolbar for **mode selection, actions, and export options**.
+- Bottom status bar provides **real-time feedback** on actions and hovered points.
 
-UI Elements
+---
 
-Canvas (drawing area)
-Toolbar (modes & actions)
-Left panel (styling controls)
-Status bar (feedback)
+## 📂 Folder Structure
+project-root/
+│
+├── code/         # All working project code
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+├── doc/          # Phase documentation (Markdown + PDF)
+│
+├── assets/       # Images, screenshots, diagrams
+│
+├── README.md     # Project overview and instructions
 
-Data Structures
+---
 
-polylines[]        // Stores all polylines
-currentPolyline    // Active drawing polyline
-undoStack          // Undo history
-redoStack          // Redo history
+## 🚀 How to Run
 
-Core Functions
+1. **Clone the repository:**  
+```bash
+- git clone https://github.com/Sana-212/hci-lab-polyline-editor.git
+```
+2. **Open the project:**
+- Open code/index.html in a modern browser.
+3. **Use the application:**
+- Start drawing polylines, moving points, or deleting points using the toolbar or keyboard shortcuts.
+- Export your drawing as PNG using the Export button or Ctrl+S.
 
-redraw() — Re-render canvas
-drawPolyline() — Draw lines & points
-findNearestPoint() — Detect closest point
-saveState() — Store history
-undo() / redo() — Navigate states
-clearCanvas() — Reset canvas
-exportPNG() — Download image
-setMode() — Switch interaction mode
-🔄 Data Flow
-User Input → Event Listener → Mode Handler  
-→ Update Data → Redraw Canvas → Visual Feedback
-💻 Code Walkthrough
-🎹 Event Handling
+---
 
-Keyboard Shortcuts
+## ⚡ Notes
+- Maximum 100 polylines can be drawn; exceeding this limit will show a warning.
+- Quit (Q) clears the canvas and closes the application interface.
+- All changes are reflected immediately in the status bar.
 
-b → Draw mode
-m → Move mode
-d → Delete mode
-r → Refresh
-Ctrl+Z / Ctrl+Y → Undo / Redo
-Ctrl+S → Export PNG
-Ctrl+Delete → Clear
-
-Mouse Events
-
-mousemove → Hover detection & preview
-click → Draw / Move / Delete actions
-
-Resize
-
-Maintains canvas responsiveness and redraws elements
-⚙️ Core Logic
-Redraw System ensures smooth updates
-Nearest Point Detection within 10px radius
-Undo/Redo uses deep copies for reliability
-Real-time Styling updates instantly
-🚀 Deployment
-🌐 Live Demo
-
-👉 https://hci-lab-polyline-editor.vercel.app
-
-🔹 Deploy on Vercel
-Push project to GitHub
-Connect repo to Vercel
-Deploy as static site
-🔹 Run Locally
-git clone https://github.com/Sana-212/hci-lab-polyline-editor
-cd polyline-editor
-
-# Open directly
-index.html
-
-# OR run local server
-python -m http.server 8000
-
-Visit: http://localhost:5500
-
-🧪 Testing & Validation
-✅ Functional Testing
-All features verified: Draw, Move, Delete, Undo/Redo, Export, Styling
-⚠️ Edge Cases
-Max 100 polylines handled
-Overlapping point detection works
-Empty canvas operations safe
-Responsive resizing preserves data
-🎨 Visual Validation
-Hover → Orange highlight
-Selected → Red with shadow
-PNG export matches canvas
-⚖️ Challenges & Trade-offs
-🔸 Challenges
-Accurate hover detection
-Reliable undo/redo state management
-Maintaining responsiveness
-Real-time styling without lag
-🔸 Trade-offs
-Deep copies (memory vs reliability)
-100 polyline limit (performance vs flexibility)
-🧠 Design Decisions
-Arrays of objects → simple & efficient
-Canvas API → fast rendering
-10px selection radius → better UX
-🔗 Links
-📂 GitHub Repo
-https://github.com/Sana-212/hci-lab-polyline-editor
-🌍 Live Demo
-https://hci-lab-polyline-editor.vercel.app
-📎 Notes
-
-This project was developed as part of an HCI Lab Exercise, focusing on usability, responsiveness, and interaction design principles.
+## 👨‍💻 Technology Stack
+- HTML5, CSS3
+- Vanilla JavaScript (ES6+)
+- Canvas API for rendering
+- Flexbox and CSS gradients for responsive layout
